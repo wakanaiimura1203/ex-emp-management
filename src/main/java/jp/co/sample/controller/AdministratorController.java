@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import jp.co.sample.domain.Administrator;
 import jp.co.sample.form.InsertAdministratorForm;
 import jp.co.sample.service.AdministratorService;
 
@@ -29,5 +30,19 @@ public class AdministratorController {
 	public String toInsert() {
 		return "administrator/insert.html";
 	}
-
+	
+	// 管理者情報を登録する。
+	@RequestMapping("/insert")
+	public String insert(InsertAdministratorForm form) {
+		// Administratorドメインをインスタンス化する。
+		Administrator administrator = new Administrator();
+		
+		// insertAdministratorFormオブジェクトの中身をAdministratorオブジェクトにコピーする。
+		administrator.setName(form.getName());
+		administrator.setMailAddress(form.getMailAddress());
+		administrator.setPassword(form.getPassword());
+		
+		administratorService.insert(administrator);
+		return "redirect:/";
+	}
 }
