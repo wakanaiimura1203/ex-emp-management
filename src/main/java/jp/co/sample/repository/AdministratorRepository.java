@@ -46,7 +46,8 @@ public class AdministratorRepository {
 				+ "FROM administrator "
 				+ "WHERE mailAddress=:mailAddress,password=:password;";
 		
-		SqlParameterSource param = new MapSqlParameterSource().addValue("mailAddress",mailAddress).addValue("password",password);
+		SqlParameterSource param = 
+				new MapSqlParameterSource().addValue("mailAddress",mailAddress).addValue("password",password);
 		
 		List<Administrator> administratorList = template.query(findSql, param, ADMINISTRATOR_ROW_MAPPER);
 		if (administratorList.size() == 0) {
