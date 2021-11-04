@@ -2,7 +2,7 @@ package jp.co.sample.domain;
 
 /**
  * @author nemur
- * 何書けばよい？
+ * 管理者を表すドメイン
  *
  */
 public class Administrator {
